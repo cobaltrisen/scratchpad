@@ -1,6 +1,9 @@
+<!DOCTYPE html>
 <html>
 <head>
   <link href="landing.css" rel="stylesheet" type="text/css"></link>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="validate.js"></script>
 </head>
 <body>
   <div class="content">
@@ -9,10 +12,11 @@
     <div class="box">
       <h1>Scratchpad</h1><br>
       <button>Sign Up</button><button>Log in</button>
-      <form>
-        <input type="text" name="name"></input><br>
-        <input type="password" name="pass"></input><br>
-        <input type="submit" name="submit"></input>
+      <form action="./signup.php" method="post">
+        <input type="text" name="name" placeholder="Username"></input><br>
+        <input type="password" name="pass" placeholder="Password"></input><br>
+        <input type="password" name="passc" placeholder="Confirm Password"></input><br>
+        <input type="submit" name="submitBtn" value="Sign Up"></input>
       </form>
     </div>
   </div>
