@@ -7,7 +7,7 @@ echo "Hello, " . $_SESSION["name"];
 ?>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <br><a href="./logout.php">Logout</a><br>
-<textarea onkeyup="save(this)" style="width: 500px; height: 400px">
+<textarea onchange="save(this)" style="width: 500px; height: 400px">
 </textarea><br>
 <span id="savetext">Not saved</span>
 
@@ -34,4 +34,16 @@ function save(ta) {
     }
   }
 }
+function load(ta){
+  $.ajax({
+    type: 'get',
+    url: './load.php',
+    success: function(ret){
+      console.log(ret);
+      data = JSON.parse(atob(ret));
+      ta.value = atob(data.text);
+    }
+  });
+}
+load(document.querySelector('textarea'));
 </script>
