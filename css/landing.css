@@ -5,6 +5,11 @@
   user-select: none;
 }
 
+body {
+  background: url("../background.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
 .content {
   position: absolute;
   top: 0;
@@ -12,17 +17,6 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-}
-
-.text {
-  background-color: #eeeeee;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  text-align: justify;
-  cursor: default;
-  filter: blur(4px) brightness(0.25);
-  transform: scale(1.1);
 }
 
 .box {

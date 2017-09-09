@@ -1,11 +1,24 @@
 <?php
 session_start();
 if(!isset($_SESSION["name"])){
-  header("Location: .");
+  header("Location: ..");
 }
-echo "Hello, " . $_SESSION["name"];
 ?>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<html>
+<head>
+  <title>Scratchpad</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <?php
+    echo "Hello, " . $_SESSION["name"];
+   ?>
+   <a href="./auth/logout">Log out</a>
+  <div>
+  </div>
+</body>
+</html>
+<!--
 <br><a href="./logout.php">Logout</a><br>
 <textarea onchange="save(this)" style="width: 500px; height: 400px">
 </textarea><br>
@@ -47,3 +60,4 @@ function load(ta){
 }
 load(document.querySelector('textarea'));
 </script>
+-->

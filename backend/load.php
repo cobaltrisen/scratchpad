@@ -1,10 +1,10 @@
 <?php
   session_start();
   if(!isset($_SESSION["name"])){
-    header("Location: .");
+    header("Location: ..");
     exit();
   }
-  require_once "./sqlconn.php";
+  require_once "sqlconn.php";
   $sql = "SELECT * FROM `users` WHERE USER_NAME = '" . mysqli_real_escape_string($conn, $_SESSION["name"]) . "'";
   if($result = mysqli_query($conn, $sql)){
     if(mysqli_num_rows($result) === 1){
