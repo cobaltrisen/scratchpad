@@ -8,56 +8,31 @@ if(!isset($_SESSION["name"])){
 <head>
   <title>Scratchpad</title>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"></link>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="app.js"></script>
+  <link href="css/application.css" rel="stylesheet" type="text/css"></link>
 </head>
 <body>
-  <?php
-    echo "Hello, " . $_SESSION["name"];
-   ?>
-   <a href="./auth/logout">Log out</a>
-  <div>
+  <div class="left">
+    <div class="userbar">
+      <span class="username">
+        <?php echo $_SESSION["name"] ?>
+      </span>
+      <button onclick="window.location = '/auth/logout'" class="logout-btn">
+        Log Out
+      </button>
+    </div>
+    <div class="pads" id="pads">
+      <div class="pad">
+        <div class="pad-content">
+        <b>JEFF</b><br>
+        My name is jeff. My name is jeff. My name is jeff. My name is jeff. My name is jeff. My name is jeff. My name is jeff. My name is jeff. My name is jeff. My name is jeff. My name is jeff.
+      </div></div>
+    </div>
+  </div>
+  <div class="right">
+
   </div>
 </body>
 </html>
-<!--
-<br><a href="./logout.php">Logout</a><br>
-<textarea onchange="save(this)" style="width: 500px; height: 400px">
-</textarea><br>
-<span id="savetext">Not saved</span>
-
-<script>
-var val = "";
-var st = document.getElementById('savetext');
-var saving = false;
-var data = {};
-function save(ta) {
-  if(!saving){
-    saving = true;
-    st.innerHTML = "Saving...";
-    if(ta.value.trim() != val){
-      val = ta.value.trim();
-      var d = new Date();
-      var savetext = "Last saved at "+d.getHours()%12 + ":" + ((toString(d.getMinutes()).length > 1) ? d.getMinutes() : "0" + d.getMinutes());
-      data.modified = savetext;
-      data.text = btoa(ta.value);
-      $.post("save.php", {data:btoa(JSON.stringify(data))}, function (ret) {
-          st.innerHTML = "Saved.";
-          saving = false;
-      });
-
-    }
-  }
-}
-function load(ta){
-  $.ajax({
-    type: 'get',
-    url: './load.php',
-    success: function(ret){
-      console.log(ret);
-      data = JSON.parse(atob(ret));
-      ta.value = atob(data.text);
-    }
-  });
-}
-load(document.querySelector('textarea'));
-</script>
--->

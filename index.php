@@ -10,7 +10,8 @@
 <html>
 <head>
   <link href="css/landing.css" rel="stylesheet" type="text/css"></link>
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"></link>
+  <title>Scratchpad</title>
 </head>
 <body>
   <div class="content">
