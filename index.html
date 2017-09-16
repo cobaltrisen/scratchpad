@@ -1,16 +1,10 @@
-<?php
-  session_start();
-  if(isset($_SESSION["name"])){
-    header("Location: ./app.php");
-  } else {
-    session_abort();
-  }
-?>
 <!DOCTYPE html>
 <html>
 <head>
   <link href="css/landing.css" rel="stylesheet" type="text/css"></link>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"></link>
+  <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+  <script src="/js/firebase.js"></script>
   <title>Scratchpad</title>
 </head>
 <body>
@@ -20,50 +14,20 @@
       <h2>The simple and secure cloud-based note and document manager</h2><br>
       <button onclick="signup()" id="sbut">Sign Up</button><button onclick="login()" id="lbut">Log in</button>
       <div id="signup" class="pane">
-      <form action="auth/signup" method="post">
-        <?php
-          if(isset($_GET['s_error'])){
-            echo "<div class=\"error\"><b>ERROR</b>: ";
-            if($_GET['s_error'] === "mismatch"){
-              echo "Passwords don't match!";
-            } else if($_GET['s_error'] === "database"){
-              echo "Database Error!";
-            } else if($_GET['s_error'] === "taken"){
-              echo "Username taken!";
-            } else {
-              echo "Unknown Error";
-            }
-            echo "</div>";
-          }
-        ?>
-
+      <form>
+        <div class="error"><b>ERROR:</b> Error</div>
         <input type="text" name="name" placeholder="Username" maxlength="32"></input><br>
         <input type="password" name="pass" placeholder="Password"></input><br>
         <input type="password" name="passc" placeholder="Confirm Password"></input><br>
-        <input type="submit" name="submitBtn" value="Create Account"></input>
+        <input type="submit" value="Create Account"></input>
       </form>
     </div>
     <div id="login" class="pane">
-    <form action="auth/login" method="post">
-      <?php
-        if(isset($_GET['l_error'])){
-          echo "<div class=\"error\"><b>ERROR</b>: ";
-          if($_GET['l_error'] === "password"){
-            echo "Password is incorrect!";
-          } else if($_GET['l_error'] === "username"){
-            echo "Username is invalid!";
-          } else if($_GET['l_error'] === "database"){
-            echo "Database Error!";
-          } else {
-            echo "Unknown Error";
-          }
-          echo "</div>";
-        }
-      ?>
-
+    <form>
+      <div class="error"><b>ERROR:</b> Error</div>
       <input type="text" name="name" placeholder="Username" maxlength="32"></input><br>
       <input type="password" name="pass" placeholder="Password"></input><br>
-      <input type="submit" name="submitBtn" value="Log In"></input>
+      <input type="submit" value="Log In"></input>
     </form>
   </div>
     </div>
