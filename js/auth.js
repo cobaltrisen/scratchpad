@@ -29,7 +29,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     if(window.location.pathname !== "/app"){
       window.location.replace("/app");
     } else {
-      loadApp();
       firebase.database().ref("/users/"+uid).on('value', function(snapshot){
         updateApp(snapshot.val());
       });
@@ -38,7 +37,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   } else {
     username = undefined;
     uid = undefined;
-    console.log("Signed out");
+    console.log("Not signed in");
     if(window.location.pathname !== "/")
       window.location.replace("/");
   }

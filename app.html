@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <title>Scratchpad</title>
   <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
@@ -11,12 +12,19 @@
 
   <link href="/css/application.css" rel="stylesheet" type="text/css"></link>
 </head>
+
 <body>
+  <div class="loadoverlay">
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+  </div>
   <div class="left">
     <div class="userbar">
       <span class="username" id="username"></span>
       <button onclick="firebase.auth().signOut()" class="logout-btn">
-        Log Out
+        Sign Out
       </button>
     </div>
     <div class="pads" id="pads">
@@ -26,4 +34,5 @@
 
   </div>
 </body>
+
 </html>
