@@ -4,7 +4,8 @@
   <link href="css/landing.css" rel="stylesheet" type="text/css"></link>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"></link>
   <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-  <script src="/js/firebase.js"></script>
+  <script src="/js/fbase.js"></script>
+  <script src="/js/auth.js"></script>
   <title>Scratchpad</title>
 </head>
 <body>
@@ -12,22 +13,22 @@
     <div class="box">
       <h1>Scratchpad</h1>
       <h2>The simple and secure cloud-based note and document manager</h2><br>
-      <button onclick="signup()" id="sbut">Sign Up</button><button onclick="login()" id="lbut">Log in</button>
+      <button onclick="signupPane()" id="sbut">Sign Up</button><button onclick="signinPane()" id="lbut">Log in</button>
       <div id="signup" class="pane">
       <form>
         <div class="error"><b>ERROR:</b> Error</div>
         <input type="text" name="name" placeholder="Username" maxlength="32"></input><br>
         <input type="password" name="pass" placeholder="Password"></input><br>
         <input type="password" name="passc" placeholder="Confirm Password"></input><br>
-        <input type="submit" value="Create Account"></input>
+        <input type="button" value="Create Account"></input>
       </form>
     </div>
     <div id="login" class="pane">
-    <form>
+    <form onsubmit="submitSignin(this); return false">
       <div class="error"><b>ERROR:</b> Error</div>
       <input type="text" name="name" placeholder="Username" maxlength="32"></input><br>
       <input type="password" name="pass" placeholder="Password"></input><br>
-      <input type="submit" value="Log In"></input>
+      <input type="submit" value="Sign in"></input>
     </form>
   </div>
     </div>
@@ -43,7 +44,7 @@
       login();
     if(url.searchParams.get("s_error"))
       signup();
-    function signup() {
+    function signupPane() {
       sub.disabled = true;
       lb.disabled = false;
       if(current === -1){
@@ -57,7 +58,7 @@
         }, 250);
       }
     }
-    function login() {
+    function signinPane() {
       sub.disabled = false;
       lb.disabled = true;
       if(current === -1){
@@ -69,6 +70,12 @@
         window.setTimeout(function () {
           log.style.maxHeight = log.children[0].clientHeight + "px";
         }, 250);
+      }
+    }
+
+    function submitSignin(frm){
+      if(frm.elements[0].value && frm.elements[1].value){
+        signIn(frm.elements[0].value, frm.elements[1].value);
       }
     }
   </script>
