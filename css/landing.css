@@ -6,7 +6,7 @@
 }
 
 body {
-  background: url("../background.png") no-repeat center center fixed;
+  background: url("../img/background.png") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -34,7 +34,7 @@ body {
   color: white;
   border: 2px solid #bb0000;
   margin: 2px;
-  width: auto;
+  display: none;
 }
 
 .pane {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link href="css/landing.css" rel="stylesheet" type="text/css"></link>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"></link>
@@ -8,76 +9,33 @@
   <script src="/js/auth.js"></script>
   <title>Scratchpad</title>
 </head>
+
 <body>
   <div class="content">
     <div class="box">
       <h1>Scratchpad</h1>
       <h2>The simple and secure cloud-based note and document manager</h2><br>
-      <button onclick="signupPane()" id="sbut">Sign Up</button><button onclick="signinPane()" id="lbut">Log in</button>
+      <button onclick="signupPn()" id="signupBtn">Sign Up</button><button onclick="signinPn()" id="signinBtn">Sign in</button>
       <div id="signup" class="pane">
-      <form>
-        <div class="error"><b>ERROR:</b> Error</div>
-        <input type="text" name="name" placeholder="Username" maxlength="32"></input><br>
-        <input type="password" name="pass" placeholder="Password"></input><br>
-        <input type="password" name="passc" placeholder="Confirm Password"></input><br>
-        <input type="button" value="Create Account"></input>
-      </form>
+        <form onsubmit="submitSignup(this); return false">
+          <div class="error" id="signup-error"><b>ERROR:</b> Error</div>
+          <input type="text" name="name" placeholder="Username" maxlength="32"></input><br>
+          <input type="password" name="pass" placeholder="Password"></input><br>
+          <input type="password" name="passc" placeholder="Confirm Password"></input><br>
+          <input type="submit" value="Create Account"></input>
+        </form>
+      </div>
+      <div id="signin" class="pane">
+        <form onsubmit="submitSignin(this); return false">
+          <div class="error" id="signin-error"><b>ERROR:</b> Error</div>
+          <input type="text" name="name" placeholder="Username" maxlength="32"></input><br>
+          <input type="password" name="pass" placeholder="Password"></input><br>
+          <input type="submit" value="Sign in"></input>
+        </form>
+      </div>
     </div>
-    <div id="login" class="pane">
-    <form onsubmit="submitSignin(this); return false">
-      <div class="error"><b>ERROR:</b> Error</div>
-      <input type="text" name="name" placeholder="Username" maxlength="32"></input><br>
-      <input type="password" name="pass" placeholder="Password"></input><br>
-      <input type="submit" value="Sign in"></input>
-    </form>
   </div>
-    </div>
-  </div>
-  <script>
-    var sup = document.getElementById("signup");
-    var log = document.getElementById("login");
-    var sub = document.getElementById("sbut");
-    var lb = document.getElementById("lbut");
-    var current = -1;
-    var url = new URL(window.location.href);
-    if(url.searchParams.get("l_error"))
-      login();
-    if(url.searchParams.get("s_error"))
-      signup();
-    function signupPane() {
-      sub.disabled = true;
-      lb.disabled = false;
-      if(current === -1){
-        current = 0;
-        sup.style.maxHeight = sup.children[0].clientHeight + "px";
-      } else if (current === 1){
-        current = 0;
-        log.style.maxHeight = 0;
-        window.setTimeout(function () {
-          sup.style.maxHeight = sup.children[0].clientHeight + "px";
-        }, 250);
-      }
-    }
-    function signinPane() {
-      sub.disabled = false;
-      lb.disabled = true;
-      if(current === -1){
-        current = 1;
-        log.style.maxHeight = sup.children[0].clientHeight + "px";
-      } else if (current === 0){
-        current = 1;
-        sup.style.maxHeight = 0;
-        window.setTimeout(function () {
-          log.style.maxHeight = log.children[0].clientHeight + "px";
-        }, 250);
-      }
-    }
-
-    function submitSignin(frm){
-      if(frm.elements[0].value && frm.elements[1].value){
-        signIn(frm.elements[0].value, frm.elements[1].value);
-      }
-    }
-  </script>
+  <script src="/js/landing.js"></script>
 </body>
+
 </html>
